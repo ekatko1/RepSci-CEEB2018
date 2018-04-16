@@ -1,0 +1,68 @@
+---
+title: "Presentation"
+author: "Egor"
+date: "April 21, 2018"
+output: 
+  revealjs::revealjs_presentation:
+    self_contained: false
+    reveal_plugins: ["notes"]
+
+---
+
+```{r setup, include=FALSE}
+library(knitr)
+opts_chunk$set(echo = FALSE)
+```
+
+
+
+# Version Control
+
+## Confusing and messy filenames
+```{r }
+include_graphics("Version control/Filenames.gif")
+```
+
+
+## Better alternatives 
+> - Informative filenames
+> - Periodically archiving the whole project (eg: zip)
+> - Many cloud based serices (also serves as backup)
+
+    `r include_graphics("Version control/Dropbox.png")`
+    `r include_graphics("Version control/Drive.png")`
+    `r include_graphics("Version control/OneDrive.png")`
+
+
+## Best: use Git (or SVN)
+> - Software designed for version control
+> - Alows you to keep track of *key* changes
+> - Makes you fearless
+> - Works with GitHub for easy collaboration and cloud backup
+> - Works with RStudio Projects
+
+
+## Resources
+ - How to use GitHub with R Studio https://r-bio.github.io/intro-git-rstudio/
+ - 
+
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
