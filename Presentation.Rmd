@@ -12,7 +12,12 @@ output:
 ```{r setup, include=FALSE}
 library(knitr)
 opts_chunk$set(echo = FALSE)
+opts_chunk$set(results = 'asis')
+
 ```
+
+
+# Project Management
 
 
 
@@ -27,11 +32,14 @@ include_graphics("Version control/Filenames.gif")
 ## Better alternatives 
 > - Informative filenames
 > - Periodically archiving the whole project (eg: zip)
-> - Many cloud based serices (also serves as backup)
-
-    `r include_graphics("Version control/Dropbox.png")`
-    `r include_graphics("Version control/Drive.png")`
-    `r include_graphics("Version control/OneDrive.png")`
+> - Many cloud based serices (also serves as backup) \
+```{r}
+include_graphics("Version control/Dropbox.png")
+cat("\t\t\t")
+include_graphics("Version control/Drive.png")
+cat("\t")
+include_graphics("Version control/OneDrive.png")
+```
 
 
 ## Best: use Git (or SVN)
@@ -43,7 +51,7 @@ include_graphics("Version control/Filenames.gif")
 
 
 ## Resources
- - How to use GitHub with R Studio https://r-bio.github.io/intro-git-rstudio/
+ - How to use GitHub with R Studio http://happygitwithr.com/
  - 
 
 
