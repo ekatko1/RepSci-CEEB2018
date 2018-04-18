@@ -71,7 +71,6 @@ opts_chunk$set(results = 'asis')
 include_graphics("Version control/Filenames.gif")
 ```
 
-
 ## Better alternatives 
 > - Informative filenames
 > - Periodically archiving the whole project (eg: zip)
@@ -84,18 +83,24 @@ cat("\t")
 include_graphics("Version control/OneDrive.png")
 ```
 
-
-## Best: use Git (or SVN)
-> - Software designed for version control
+## Best alternative 
+- Use software designed for version control
+- Git or SVN
 > - Alows you to keep track of *key* changes
 > - Makes you fearless
 > - Works with GitHub for easy collaboration and cloud backup
-> - Works with RStudio Projects
+> - Supported in RStudio
+
+## Git basics
+
+`r include_graphics("Version control/git-transport.png") `
 
 
 ## Resources
- - How to use GitHub with R Studio http://happygitwithr.com/
- - 
+ - R for Reproducible Scientific Analyses https://swcarpentry.github.io/r-novice-gapminder/
+ - How to use GitHub with RStudio http://happygitwithr.com/
+ - Excuse me, do you have a moment to talk about version control? https://dx.doi.org/10.7287%2Fpeerj.preprints.3159v2.
+
 
 
 ## R Markdown
