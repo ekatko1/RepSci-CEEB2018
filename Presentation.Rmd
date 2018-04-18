@@ -2,21 +2,25 @@
 title: "Presentation"
 author: "Egor"
 date: "April 21, 2018"
-output: 
-  ioslides_presentation:
-    widescreen: true
-    transition: faster
 # output: 
-#   revealjs::revealjs_presentation:
-#     self_contained: false
-#     reveal_plugins: ["notes"]
+#   ioslides_presentation:
+#     widescreen: true
+#     transition: faster
+output:
+  revealjs::revealjs_presentation:
+    self_contained: false
+    reveal_plugins: ["notes"]
 
 ---
 
 ```{r setup, include=FALSE}
 library(knitr)
+library(pander)
 opts_chunk$set(echo = FALSE)
 opts_chunk$set(results = 'asis')
+panderOptions('table.split.table', Inf)
+panderOptions('keep.line.breaks',  TRUE)
+panderOptions('table.alignment.rownames', 'left')
 
 ```
 
@@ -101,6 +105,39 @@ include_graphics("Version control/OneDrive.png")
  - How to use GitHub with RStudio http://happygitwithr.com/
  - Excuse me, do you have a moment to talk about version control? https://dx.doi.org/10.7287%2Fpeerj.preprints.3159v2.
 
+# Generating Reproducible Documents
+<div class="notes">
+These slides were generated entirely in RStudio. \
+I did not open PowerPoint, or Google Slides even once.
+</div>
+
+## R Markdown
+
+- Simple formatting syntax for HTML, PDF and MS Word
+- Integrate "chunks" of R code to include code, plots, and tables
+
+## Displaying code output
+```{r, echo=TRUE}
+print("Hello World!")
+```
+
+```{r cars, echo=TRUE}
+pander(head(cars), col.names = c("Speed (&mu;m/h)", "Distance Travelled (&mu;m)"))
+```
+
+## Plots
+
+```{r plot, fig.height=5*0.9, fig.width=7*0.9, echo=TRUE, warning=FALSE, message=FALSE}
+library(ggplot2); library(cowplot)
+ggplot(iris, aes(x=Sepal.Length, y=Sepal.Width)) + geom_point()
+```
+
+## And Reporting Test Results
+
+```{r echo=TRUE}
+fit <- lm(dist~speed, data=cars)
+pander(summary(fit))
+```
 
 
 ## R Markdown
@@ -109,16 +146,6 @@ This is an R Markdown document. Markdown is a simple formatting syntax for autho
 
 When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
 
-```{r cars}
-summary(cars)
-```
 
-## Including Plots
-
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
