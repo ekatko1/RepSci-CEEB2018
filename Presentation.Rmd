@@ -3,9 +3,13 @@ title: "Presentation"
 author: "Egor"
 date: "April 21, 2018"
 output: 
-  revealjs::revealjs_presentation:
-    self_contained: false
-    reveal_plugins: ["notes"]
+  ioslides_presentation:
+    widescreen: true
+    transition: faster
+# output: 
+#   revealjs::revealjs_presentation:
+#     self_contained: false
+#     reveal_plugins: ["notes"]
 
 ---
 
@@ -16,10 +20,49 @@ opts_chunk$set(results = 'asis')
 
 ```
 
+# Introduction
+
+## Myself 
+- Fan of open source software
+- Bachelor in Computer Science and Biology at McGill
+- Started using R after learning Java and Python
+> - Discovered RMarkdown and knitr \
+`r include_graphics("Introduction/Brain.png")`
+
+<div class="notes">
+- R was very confusing
+- Different ways to access dataframes versus lists versus matrixes. 
+- Not one good way to do object oriented programming. 
+- Apply functions instead of for loops.
+</div>
+
+## Why have a good workflow?
+> - Keep a clean workspace and focus on one thing at a time \
+`r include_graphics("Introduction/Desk.jpg")`
+> - Make collaboration and sharing work easier
 
 # Project Management
 
+## Basics
 
+<div class="columns-2">
+`r include_graphics("Project/Structure.png")`
+
+- Keep project in one folder
+- Keep raw data folder read-only
+- Different folder treated data
+- Avoid duplicating code
+- One folder for functions
+- One folder for anlysis scripts
+- Folders for output, plots, text documents
+
+</div>
+
+## In RStudio
+
+- Use RStudio Projects \
+`r include_graphics("Project/rstudio.png")`
+- ProjectTemplate package
 
 # Version Control
 
