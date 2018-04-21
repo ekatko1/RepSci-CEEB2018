@@ -7,10 +7,7 @@ date: "April 21, 2018"
 #     widescreen: true
 #     transition: faster
 output:
-  revealjs::revealjs_presentation:
-    self_contained: false
-    reveal_plugins: ["notes"]
-
+  revealjs::revealjs_presentation
 ---
 
 ```{r setup, include=FALSE}
@@ -45,73 +42,10 @@ panderOptions('table.alignment.rownames', 'left')
 > - Computational reproducibility
 > - Easy revision
 
-
-
-## Outline
-
-> - Reproducible documents
-> - Project management and organization
-> - Version control
-
-## Reproducible Document
-
-> - Computes all numbers
-> - Avoids transcription errors
-> - Removes ambiguity
-> - Easy revision 
-
-# Generating Reproducible Documents
-<div class="notes">
-These slides were generated entirely in RStudio. \
-I did not open PowerPoint, or Google Slides even once.
-</div>
-
 ## R Markdown
-
 > - Simple formatting syntax for HTML, PDF and MS Word
 > - Integrate "chunks" of R (or Python) code 
->   - Generate code, plots, and tables
-> - Write complex equations
-> - Knit = export to HTML/Word/PDF
-
-## Displaying code and output
-
-```{r, echo=TRUE}
-print("Hello ~~World~~ **CEEB**!")
-```
-
-## Displaying data
-
-```{r cars, echo=TRUE, results='asis'}
-pander(head(cars), col.names = c("Speed (&mu;m/h)", "Distance Travelled (&mu;m)"))
-```
-
-## Plots
-
-```{r plot, fig.height=5*0.9, fig.width=7*0.9, echo=TRUE, warning=FALSE, message=FALSE}
-library(ggplot2); library(cowplot)
-ggplot(iris, aes(x=Sepal.Length, y=Sepal.Width)) + geom_point()
-```
-
-## And Reporting Test Results
-
-```{r echo=TRUE, results='asis'}
-fit <- lm(dist~speed, data=cars)
-pander(summary(fit))
-```
-
-## Reproducible Manuscripts
-
-> - Use existing templates (rticles or papaja package)
-> - If no template exists:
->     - Write some text/code in RMarkdown
->     - Knit to Word document
->     - Change style definitions in Word
->     - Use styled doc as a template
->     - Repeat
-> - Use bibtex for citations (citr)
-
-# Project Management
+`r include_graphics("Rmd/rmarkdownflow.png")`
 
 ## Why have a good workflow?
 > - Keep a clean workspace and focus on one thing at a time \
@@ -119,22 +53,27 @@ pander(summary(fit))
 > - Make collaboration and sharing work easier
 
 ## Basics
+<style>
+.container{
+    display: flex;
+}
+.col{
+    flex: 1;
+}
+</style>
 
-`r include_graphics("Project/Structure.png")`
+<div class="container"> <div class="col">
+`r include_graphics("Project/Structure.png")` 
+</div>
 
+<div class="col">
 - Keep project in one folder
 - Keep raw data folder read-only
 - Avoid duplicating code
-
-## In RStudio
-
-- Use RStudio Projects \
-`r include_graphics("Project/rstudio.png")`
-- ProjectTemplate package
-
-# Version Control
-
-## Confusing and messy filenames
+- Doc folder for notes, text, literature
+</div>
+</div>
+## Tracking Progress
 ```{r }
 include_graphics("Version control/Filenames.gif")
 ```
@@ -163,21 +102,11 @@ include_graphics("Version control/OneDrive.png")
 
 `r include_graphics("Version control/git-transport.png") `
 
-
 ## Resources
  - R for Reproducible Scientific Analyses https://swcarpentry.github.io/r-novice-gapminder/
  - How to use GitHub with RStudio http://happygitwithr.com/
  - Excuse me, do you have a moment to talk about version control? https://dx.doi.org/10.7287%2Fpeerj.preprints.3159v2.
  - Guide to RMarkdown https://rmarkdown.rstudio.com/lesson-1.html
  - RMarkdown for writing reproducible scientific papers https://libscie.github.io/rmarkdown-workshop/handout.html
- -Happy collaboration with Rmd to docx https://rmarkdown.rstudio.com/articles_docx.html
-
-## R Markdown
-
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+ - Happy collaboration with Rmd to docx https://rmarkdown.rstudio.com/articles_docx.html
+ - This presentation: https://github.com/ekatko1/RepSci-CEEB2018
