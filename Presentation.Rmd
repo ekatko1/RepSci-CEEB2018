@@ -1,5 +1,5 @@
 ---
-title: "Presentation"
+title: "A Reproducible Science Workflow in RStudio"
 author: "Egor"
 date: "April 21, 2018"
 # output: 
@@ -17,20 +17,20 @@ output:
 library(knitr)
 library(pander)
 opts_chunk$set(echo = FALSE)
-opts_chunk$set(results = 'asis')
+# opts_chunk$set(results = 'asis')
 panderOptions('table.split.table', Inf)
 panderOptions('keep.line.breaks',  TRUE)
 panderOptions('table.alignment.rownames', 'left')
 
 ```
 
-# Introduction
-
 ## Myself 
-- Fan of open source software
-- Bachelor in Computer Science and Biology at McGill
-- Started using R after learning Java and Python
-> - Discovered RMarkdown and knitr \
+> - Bachelor in Computer Science and Biology at McGill
+> - Fan of open source software
+> - Started using R in grad school
+>   - Collaboration with co-supervisor in England
+>   - No easy way to transmit results
+> - Discovered RMarkdown this year \
 `r include_graphics("Introduction/Brain.png")`
 
 <div class="notes">
@@ -40,27 +40,91 @@ panderOptions('table.alignment.rownames', 'left')
 - Apply functions instead of for loops.
 </div>
 
+## Why go reproducible?
+> - Avoid errors
+> - Computational reproducibility
+> - Easy revision
+
+
+
+## Outline
+
+> - Reproducible documents
+> - Project management and organization
+> - Version control
+
+## Reproducible Document
+
+> - Computes all numbers
+> - Avoids transcription errors
+> - Removes ambiguity
+> - Easy revision 
+
+# Generating Reproducible Documents
+<div class="notes">
+These slides were generated entirely in RStudio. \
+I did not open PowerPoint, or Google Slides even once.
+</div>
+
+## R Markdown
+
+> - Simple formatting syntax for HTML, PDF and MS Word
+> - Integrate "chunks" of R (or Python) code 
+>   - Generate code, plots, and tables
+> - Write complex equations
+> - Knit = export to HTML/Word/PDF
+
+## Displaying code and output
+
+```{r, echo=TRUE}
+print("Hello ~~World~~ **CEEB**!")
+```
+
+## Displaying data
+
+```{r cars, echo=TRUE, results='asis'}
+pander(head(cars), col.names = c("Speed (&mu;m/h)", "Distance Travelled (&mu;m)"))
+```
+
+## Plots
+
+```{r plot, fig.height=5*0.9, fig.width=7*0.9, echo=TRUE, warning=FALSE, message=FALSE}
+library(ggplot2); library(cowplot)
+ggplot(iris, aes(x=Sepal.Length, y=Sepal.Width)) + geom_point()
+```
+
+## And Reporting Test Results
+
+```{r echo=TRUE, results='asis'}
+fit <- lm(dist~speed, data=cars)
+pander(summary(fit))
+```
+
+## Reproducible Manuscripts
+
+> - Use existing templates (rticles or papaja package)
+> - If no template exists:
+>     - Write some text/code in RMarkdown
+>     - Knit to Word document
+>     - Change style definitions in Word
+>     - Use styled doc as a template
+>     - Repeat
+> - Use bibtex for citations (citr)
+
+# Project Management
+
 ## Why have a good workflow?
 > - Keep a clean workspace and focus on one thing at a time \
 `r include_graphics("Introduction/Desk.jpg")`
 > - Make collaboration and sharing work easier
 
-# Project Management
-
 ## Basics
 
-<div class="columns-2">
 `r include_graphics("Project/Structure.png")`
 
 - Keep project in one folder
 - Keep raw data folder read-only
-- Different folder treated data
 - Avoid duplicating code
-- One folder for functions
-- One folder for anlysis scripts
-- Folders for output, plots, text documents
-
-</div>
 
 ## In RStudio
 
@@ -88,8 +152,8 @@ include_graphics("Version control/OneDrive.png")
 ```
 
 ## Best alternative 
-- Use software designed for version control
-- Git or SVN
+> - Use software designed for version control
+>     - Git or SVN
 > - Alows you to keep track of *key* changes
 > - Makes you fearless
 > - Works with GitHub for easy collaboration and cloud backup
@@ -104,41 +168,9 @@ include_graphics("Version control/OneDrive.png")
  - R for Reproducible Scientific Analyses https://swcarpentry.github.io/r-novice-gapminder/
  - How to use GitHub with RStudio http://happygitwithr.com/
  - Excuse me, do you have a moment to talk about version control? https://dx.doi.org/10.7287%2Fpeerj.preprints.3159v2.
-
-# Generating Reproducible Documents
-<div class="notes">
-These slides were generated entirely in RStudio. \
-I did not open PowerPoint, or Google Slides even once.
-</div>
-
-## R Markdown
-
-- Simple formatting syntax for HTML, PDF and MS Word
-- Integrate "chunks" of R code to include code, plots, and tables
-
-## Displaying code output
-```{r, echo=TRUE}
-print("Hello World!")
-```
-
-```{r cars, echo=TRUE}
-pander(head(cars), col.names = c("Speed (&mu;m/h)", "Distance Travelled (&mu;m)"))
-```
-
-## Plots
-
-```{r plot, fig.height=5*0.9, fig.width=7*0.9, echo=TRUE, warning=FALSE, message=FALSE}
-library(ggplot2); library(cowplot)
-ggplot(iris, aes(x=Sepal.Length, y=Sepal.Width)) + geom_point()
-```
-
-## And Reporting Test Results
-
-```{r echo=TRUE}
-fit <- lm(dist~speed, data=cars)
-pander(summary(fit))
-```
-
+ - Guide to RMarkdown https://rmarkdown.rstudio.com/lesson-1.html
+ - RMarkdown for writing reproducible scientific papers https://libscie.github.io/rmarkdown-workshop/handout.html
+ -Happy collaboration with Rmd to docx https://rmarkdown.rstudio.com/articles_docx.html
 
 ## R Markdown
 
